@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mg-0-auto {
+    margin: 0 auto;
+}

@@ -1,4 +1,3 @@
 export default {
-    SELECT_DATA: 'SELECT_DATA',
-    CHANGE_ACTIVE_TAB: 'CHANGE_ACTIVE_TAB',
+    SELECT_POST: 'SELECT_POST',
 }

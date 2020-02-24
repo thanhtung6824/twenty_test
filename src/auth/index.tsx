@@ -4,7 +4,7 @@ import {
     Redirect,
 } from 'react-router-dom';
 
-import useAuth from '../hooks/useAuth';
+import {useAuth} from '../hooks';
 
 const AuthRoute: React.FC = ({children, ...rest}) => {
     const [isAuthenticated] = useAuth();
@@ -13,7 +13,7 @@ const AuthRoute: React.FC = ({children, ...rest}) => {
         <Route
             {...rest}
             render={({location}) =>
-                isAuthenticated() ? (
+                isAuthenticated ? (
                     children
                 ) : (
                     <Redirect

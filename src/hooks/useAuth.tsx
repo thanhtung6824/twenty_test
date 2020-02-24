@@ -1,23 +1,17 @@
+import {MouseEvent} from 'react';
 import useLocalStorage from './useLocalStorage';
 import {
     useHistory
 } from 'react-router-dom';
 
-const useAuth = () => {
+const useAuth = () : [boolean, (event: MouseEvent<HTMLElement>) => void] => {
     const history = useHistory();
-    const [user, setUser, removeUser] = useLocalStorage('user', '');
-    const [token, setToken, removeToken] = useLocalStorage('token', '');
-    const [expiredTime, setExpiredTime, removeExpiredTime] = useLocalStorage('expiredTime', '');
+    const [user, setUser, removeItem] = useLocalStorage<string>('user', '');
 
-    const isAuthenticated = () => {
-        const isExpired = +expiredTime < Math.floor(Date.now() / 1000);
-        return !isExpired && user && token;
-    };
+    const isAuthenticated = !!user;
 
     const logOut = () => {
-        removeUser('user');
-        removeToken('token');
-        removeExpiredTime('expiredTime');
+        removeItem();
         history.replace('/')
     };
 
